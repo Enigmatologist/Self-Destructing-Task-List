@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask( 'run', [ 'hapi', 'watch' ]);
 
-    grunt.registerTask( 'heroku:production', ['default']);
+    grunt.registerTask( 'heroku:production', ['build']);
 
     grunt.initConfig({
         browserify: {
