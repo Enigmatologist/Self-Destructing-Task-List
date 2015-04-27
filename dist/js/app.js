@@ -1,20 +1,15 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var app = angular.module("Blocitoff", ["firebase"]);
 
-angular.module('Blocitoff', [
+app.controller('Task.controller', ['$scope', '$firebase', function($scope, $firebase){
+  var ref = new Firebase("https://blocitoff.firebaseio.com/tasks");
+  var sync = $firebase(ref);
 
-  ])
+  $scope.tasks = sync.$asArray();
 
-  .controller('Task.controller', ['$scope', function($scope){
-    $scope.subText = "Current Tasks";
+  $scope.addTask = function(task){
+    $scope.tasks.$add({task: task});
+  };
 
-    $scope.tasks = [
-      'Do the Dishes',
-      'Wash Clothes',
-      'Get Oil Change',
-      'Get groceries',
-      'Tire Rotation'
-    ];
-    
-  }]);
+}]);
 },{}]},{},[1]);

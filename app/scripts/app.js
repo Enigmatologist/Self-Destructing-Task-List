@@ -1,18 +1,13 @@
 var app = angular.module("Blocitoff", ["firebase"]);
 
-angular.module('Blocitoff', [
+app.controller('Task.controller', ['$scope', '$firebase', function($scope, $firebase){
+  var ref = new Firebase("https://blocitoff.firebaseio.com/tasks");
+  var sync = $firebase(ref);
 
-  ])
+  $scope.tasks = sync.$asArray();
 
-  .controller('Task.controller', ['$scope', function($scope){
-    $scope.subText = "Current Tasks";
+  $scope.addTask = function(task){
+    $scope.tasks.$add({task: task});
+  };
 
-    $scope.tasks = [
-      'Do the Dishes',
-      'Wash Clothes',
-      'Get Oil Change',
-      'Get groceries',
-      'Tire Rotation'
-    ];
-    
-  }]);
+}]);

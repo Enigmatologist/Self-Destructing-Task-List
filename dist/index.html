@@ -14,10 +14,14 @@
   </head>
   <body class="centered">
       <div ng-controller='Task.controller'>
-        <h2>{{ subText }}</h2>
-        <ul ng-repeat='task in tasks'>
-          <li>{{ task }}</li>
-        </ul>
+        <h1>Current Tasks</h1>
+        <form ng-submit="addTask(newTaskItem)">
+          <input ng-model="newTaskItem">
+          <button type="submit">add task</button>
+        </form>
+          <ul>
+            <li ng-repeat="task in tasks">{{ task.task }}</li>
+          </ul>
       </div>
       <div ui-view></div>
   </body>
