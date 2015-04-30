@@ -1,6 +1,21 @@
-var app = angular.module("Blocitoff", ["firebase"]);
+var app = angular.module('Blocitoff', [
+  'firebase',
+  'ui.router'  
+  ]);
 
-app.controller('Task.controller', ['$scope', '$firebase', function($scope, $firebase){
+
+app.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider){
+  $locationProvider.html5Mode(true);
+
+  $stateProvider.state('home', {
+    url: '/',
+    controller: 'Home.controller',
+    templateUrl: '/templates/home.html'
+  });
+}]);
+
+
+app.controller('Home.controller', ['$scope', '$firebase', function($scope, $firebase){
   var ref = new Firebase("https://blocitoff.firebaseio.com/tasks");
   var sync = $firebase(ref);
 
@@ -8,6 +23,7 @@ app.controller('Task.controller', ['$scope', '$firebase', function($scope, $fire
 
   $scope.addTask = function(task){
     $scope.tasks.$add({task: task});
+    $scope.newTaskItem = "";
   };
 
 }]);
