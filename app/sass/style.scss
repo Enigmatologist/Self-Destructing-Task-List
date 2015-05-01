@@ -4,3 +4,49 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.checkbox {
+  float: right;
+}
+
+.todo {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.button {
+  float: right;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  border: none;
+  background-color: #F0F0F0;
+
+}
+
+.button:focus {
+  outline-style: none;
+}
+
+.todo .button:hover {
+  background-color: #D0D0D0;
+}
+
+.check:hover:after {
+  content: "✔";
+}
+
+.expired {
+  color: red;
+  background-color: #D0D0D0;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: default;
+}
+
+.completed {
+  background-color: #D0D0D0;
+  cursor: default;
+}

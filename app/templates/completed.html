@@ -1,8 +1,11 @@
 <div>
-  <h1>Task History</h1>
-  <div>
-    <ul>
-      <li ng-repeat="task in tasks" ng-show="">{{ task.task }}</li><!--shows completed tasks -->
+  <h3>Completed Tasks</h3>
+  <div ng-repeat="task in tasks">
+    <ul class="list-group">
+      <li class="list-group-item" ng-show="task.state == 'complete'">
+        {{ task.task }}
+        <button class="button completed" ng-click='undoComplete(task.$id)'>✔</button>
+      </li><!--shows completed tasks -->
     </ul>
   </div>
 </div>
