@@ -10,6 +10,8 @@
       <ul>
         <li class="todo" ng-show="task.state == 'active'" ng-init="expireTask(task.$id)">
           {{task.task}}
+          <a href="" ng-click="move($index, 'up')"><span class="glyphicon glyphicon-arrow-up"></span></a>
+          <a href="" ng-click="move($index, 'down')"><span class="glyphicon glyphicon-arrow-down"></span></a>
           <button class="button check" ng-click="completeTask(task.$id)"></button>
         </li>
       </ul>

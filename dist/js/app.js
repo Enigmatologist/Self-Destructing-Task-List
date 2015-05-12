@@ -55,6 +55,28 @@ app.controller('Active.controller', ['$scope', '$firebase', function($scope, $fi
     tasks.$save(task);
   };
 
+  //function to move an item
+  $scope.move = function(index, direction){
+    //Moving up
+    if(direction === 'up') {
+      if(index === 0) {
+        return;
+      }
+      index -= 1;
+    }
+    //Moving down
+    if(direction === 'down') {
+      if(index === $scope.tasks.length - 1){
+        return;
+      }
+    }
+
+    var todo = $scope.tasks[index];
+    $scope.tasks.splice(index + 2, 0, todo);
+    $scope.tasks.splice(index, 1);
+    
+  };
+
   //make task expire after certain time
   $scope.expireTask = function(taskId) {
     var task = tasks.$getRecord(taskId);
